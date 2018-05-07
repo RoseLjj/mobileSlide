@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <style>
+        .circle{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: pink;
+            position: relative;
+            top: 100px;
+            left: 600px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="circle"></div>
+</body>
+</html>
+<script>
+    new function(){
+        var _self = this;
+        _self.width = 750;//设置默认最大宽度
+        _self.fontSize = 100;//设置字体大小基数
+        _self.widthProportion = function(){var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;return p>1?1:p<0.427?0.427:p;};
+        _self.changePage = function(){
+            document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+        }
+        _self.changePage();
+        window.addEventListener('resize',function(){_self.changePage();},false);
+
+    };
+    $('.circle').animate({
+        top: 500,
+        opacity: 1
+    }, 1000, 'easeOutBounce');
+
+//  1  linear
+//  2  swing
+//  3  easeInQuad
+//  4  easeOutQuad
+//  5  easeInOutQuad
+//  6  easeInCubic
+//  7  easeOutCubic
+//  8  easeInOutCubic
+//  9  easeInQuart
+//  10  easeOutQuart
+//  11  easeInOutQuart
+//  12  easeInQuint
+//  13  easeOutQuint
+//  14  easeInOutQuint
+//  15  easeInExpo
+//  16  easeOutExpo
+//  17  easeInOutExpo
+//  18  easeInSine
+//  19  easeOutSine
+//  20  easeInOutSine
+//  21  easeInCirc
+//  22  easeOutCirc
+//  23  easeInOutCirc
+//  24  easeInElastic
+//  25  easeOutElastic
+//  26  easeInOutElastic
+//  27  easeInBack
+//  28  easeOutBack
+//  29  easeInOutBack
+//  30  easeInBounce
+//  31  easeOutBounce //弹簧
+//  32  easeInOutBounce
+</script>

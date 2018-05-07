@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="keywords" content="关键字" />
+    <meta name="description" content="分享描述" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/zdialog.css">
+    <link rel="stylesheet" href="./css/slide.css">
+
+    <script src="./js/jquery-1.11.0.js"></script>
+    <script src="./js/zdialog.js"></script>
+    <script src="./js/alert.js"></script>
+    <script src="./js/delighters.min.js"></script>
+</head>
+<body>
+<div class="boxOuter">
+    <div class="maxBack">
+        <img src="./images/1.jpg" alt="">
+        <img src="./images/1.jpg" alt="">
+        <div class="pictures">
+            <img src="./images/train2.png" alt=""  class="train" >
+            <img src="./images/3.jpg" alt=""  class="niu" >
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+<script>
+    new function(){
+        var _self = this;
+        _self.width = 750;//设置默认最大宽度
+        _self.fontSize = 40;//设置字体大小基数
+        _self.widthProportion = function(){var p = (document.body&&document.body.clientWidth||document.getElementsByTagName("html")[0].offsetWidth)/_self.width;return p>1?1:p<0.427?0.427:p;};
+        _self.changePage = function(){
+            document.getElementsByTagName("html")[0].setAttribute("style","font-size:"+_self.widthProportion()*_self.fontSize+"px !important");
+        }
+        _self.changePage();
+        window.addEventListener('resize',function(){_self.changePage();},false);
+
+    };
+    var oneRem = parseFloat($('html').css('font-size'));
+    console.log(oneRem);
+    $(document).on('scroll',function (e) {
+        var d_Y2 = $(document).scrollTop()/oneRem;
+        console.log(d_Y2);
+
+        if(d_Y2<obj.finish && d_Y2>obj.begin) {
+            var pathX = (d_Y2 / (obj.finish-obj.begin)) * (obj.end-obj.start)*2 +obj.start;
+            $('.train').css({
+                top:pathX+'rem'
+//                'transform': 'rotate(90deg) translateX(' + pathX + 'px) translateY(83%)',
+            })
+        }
+        if(d_Y2>obj2.start && d_Y2 < obj2.end){
+            var pathX2 = ((d_Y2-obj2.start) / (obj2.end-obj2.start)) * (obj2.end-obj2.start)*2 +obj2.start;
+            $('.niu').css({
+                'transform': 'rotate(90deg) translateX(' + pathX2 + 'px) translateY(-50px)',
+            })
+        }
+    })
+    var obj =  {
+        id:'train',
+        end:0,
+        start:-24, //移动后的css值
+        begin:0,
+        finish:24, //屏幕滚动结束的位置
+    };
+
+    var obj2 =  {
+        id:'train',
+        end:1000,
+        start:900,
+        begin:900,
+        finish:1000, //屏幕滚动结束的位置
+    };
+    var data = [
+        {
+            id:'train',
+            end:291,
+            start:-467,
+        },
+        {
+            id:'niu',
+            top:0,
+            end:1200,
+            start:800,
+            path:600
+        }
+    ]
+</script>

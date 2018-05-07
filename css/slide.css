@@ -1,0 +1,45 @@
+body,html{
+    width: 100%;
+}
+
+.boxOuter{
+    position: relative;
+}
+
+.boxOuter .maxBack{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.maxBack img{
+    width: 100%;
+}
+
+.boxOuter .pictures{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.pictures .train{
+    width: 8rem;
+    transition: all 1s;
+    position: relative;
+    top:-24rem;
+    left:5rem;
+    /*transform: translateX(-500px) ;*/
+}
+
+
+.pictures .niu{
+    width: 8rem;
+    transition: all 2s;
+    margin-top: 300px;
+    transform: rotate(90deg) translateX(900px) translateY(-50px);
+}
+
+

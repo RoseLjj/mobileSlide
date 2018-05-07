@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <title></title>
+    <style>
+        .div{text-align: center;font-size:30px;}
+        #main{
+
+        }
+    </style>
+</head>
+<body>
+<div id="main"></div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:0;left:0;">1</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:0;left:110px;">2</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:0;left:220px;">3</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:310px;left:0;">4</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:310px;left:110px;">5</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:310px;left:220px;">6</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:620px;left:0;">7</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:620px;left:110px;">8</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:620px;left:220px;">9</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:930px;left:0;">10</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:930px;left:110px;">11</div>
+<div class="div" style="width:100px;height:300px;line-height:100px;background-color:red;position:absolute;top:930px;left:220px;">12</div>
+<script src="./js/jquery-1.11.0.js"></script>
+<script>
+    /*function getcolor(){
+        var color_arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+        function suiji(){
+            return Math.floor(Math.random()*16);
+        }
+        var colorSTR ="#"+color_arr[suiji()]+color_arr[suiji()]+color_arr[suiji()]+color_arr[suiji()]+color_arr[suiji()]+color_arr[suiji()];
+        return colorSTR;
+    }
+    var divd = $(".div");
+    divd.each(function(index){
+        $(this).on('touchstart', function(evt) {
+            var e = event || evt;
+            e.preventDefault();//阻止其他事件
+            //要做的事情
+        }).on('touchmove', function(evt) {
+            var e = event || evt;
+            e.preventDefault();//阻止其他事件
+
+            // 如果这个元素的位置内只有一个手指的话
+            //console.log(e.targetTouches)
+            //console.log(event.targetTouches[0].clientX+"/"+event.targetTouches[0].clientY+"/"+event.targetTouches[0].pageX+"/"+event.targetTouches[0].pageY)
+            if (e.targetTouches.length == 1) {
+                var touch = e.targetTouches[0];  // 把元素放在手指所在的位置
+                $(this).css("left",(touch.pageX- parseInt($(this).width())/2 + 'px'));
+                $(this).css("top",(touch.pageY- parseInt($(this).height())/2 + 'px'));
+                $(this).css("background", getcolor());
+            }
+        }).on('touchend', function(evt) {
+            var e = event || evt;
+            e.preventDefault();//阻止其他事件
+            $(this).css("background",getcolor());
+        })
+    });
+
+    var startX = startY = endX = endY = 0;
+    var dom = document.getElementById('main');
+    //touchStart事件
+    dom.addEventListener('touchstart',function(event){
+        var touch = event.targetTouches[0];
+        startX = touch.pageX;
+        startY = touch.pageY;
+        document.getElementById('start').value = startX + '，' + startY;
+    },false);
+    //touchmove事件
+    dom.addEventListener('touchmove',function(event){
+        var touch = event.targetTouches[0];
+        endX = touch.pageX;
+        endY = touch.pageY;
+    },false);
+    //touchend事件
+    dom.addEventListener('touchend',function(event){
+        document.getElementById('end').value = endX + '，' + endY;
+        document.getElementById('count').value = (endX - startX) + '，' + (endY - startY);
+    },false);*/
+    var startX,startY,moveX,moveY,endX,endY;
+    $(document).on('touchstart',function (e) {
+        var d_Y1 = $(document).scrollTop();
+//        console.log(d_Y1);
+        startX = e.originalEvent.targetTouches[0].pageX;
+        startY = e.originalEvent.targetTouches[0].pageY;
+//        console.log('startX:'+startX+'--'+'startY:'+startY);
+    }).on('touchmove',function (e) {
+        moveX = e.originalEvent.targetTouches[0].pageX;
+        moveY = e.originalEvent.targetTouches[0].pageY;
+        var d_Y2 = $(document).scrollTop();
+        console.log(d_Y2);
+//        console.log('moveX:'+moveX+'--'+'moveY:'+moveY);
+//        var x = moveX-startX;
+        var y = moveY-startY;
+//        console.log('startY:'+y);
+    }).on('touchend',function (e) {
+//        endX = e.originalEvent.targetTouches[0].pageX;
+//        endY = e.originalEvent.targetTouches[0].pageY;
+//        var y = endY - startY;
+//        console.log(y);
+    })
+
+</script>
+</body>
+</html>
